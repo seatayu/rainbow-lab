@@ -4,7 +4,7 @@
  */
  {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "vite-reference",
+	"name": "rainbow-lab-qonjfvfbvh3lh5nb0lgrb",
 	"main": "worker/index.ts",
 	"compatibility_date": "2025-04-24",
 	"assets": {
