@@ -1,6 +1,6 @@
 # Cloudflare Full-Stack React Boilerplate
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/seatayu/rainbow-lab)
 
 A production-ready boilerplate for building full-stack applications on Cloudflare. Features a modern React frontend with Tailwind CSS and shadcn/ui, powered by Vite for fast development, and a Hono-based API backend running on Cloudflare Workers.
 
@@ -114,7 +114,7 @@ bun build
 wrangler deploy
 ```
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/seatayu/rainbow-lab)
 
 Configure your Cloudflare account in `wrangler.jsonc`.
 
