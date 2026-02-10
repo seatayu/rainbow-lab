@@ -17,7 +17,7 @@ export function HomePage() {
   const audioEnabled = useGameStore((s) => s.audioEnabled);
   const toggleAudio = useGameStore((s) => s.toggleAudio);
   const { playSfx, initAudio } = useAudioManager();
-  const handleUtility = React.useCallback((action: () => void) => {
+  const handleUtility: (action: () => void) => void = React.useCallback((action: () => void) => {
     initAudio();
     playSfx('click');
     action();
@@ -120,6 +120,7 @@ export function HomePage() {
       <AnimatePresence>
         {isWon && (
           <motion.div
+            key="success-modal"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

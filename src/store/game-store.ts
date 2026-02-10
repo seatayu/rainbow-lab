@@ -58,8 +58,8 @@ export const useGameStore = create<GameState>((set, get) => ({
       if (historyLen === targetTotal) stars = 3;
       else if (historyLen <= targetTotal + 2) stars = 2;
       set((state) => {
-        const nextProg = { 
-          ...state.levelProgress, 
+        const nextProg = {
+          ...state.levelProgress,
           [currentLevel]: { stars: Math.max(state.levelProgress[currentLevel]?.stars || 0, stars), unlocked: true },
           [currentLevel + 1]: { stars: state.levelProgress[currentLevel + 1]?.stars || 0, unlocked: true }
         };
@@ -92,7 +92,8 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
   nextLevel: () => {
     const nextLvl = get().level + 1;
-    get().setLevel(nextLvl);
+    const idx = (nextLvl - 1) % LEVELS.length;
+    set({ level: nextLvl, target: LEVELS[idx], drops: { r: 0, y: 0, b: 0 }, history: [], isWon: false });
   },
   setLevel: (lvl: number) => {
     const idx = (lvl - 1) % LEVELS.length;
