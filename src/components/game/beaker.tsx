@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/store/game-store';
 import { mixRYB } from '@/lib/color-math';
+import { cn } from '@/lib/utils';
 import { Bubbles, Sparkles } from './visual-effects';
 export function Beaker() {
   const drops = useGameStore((s) => s.drops);
@@ -62,4 +63,3 @@ export function Beaker() {
     </div>
   );
 }
-import { cn } from '@/lib/utils';

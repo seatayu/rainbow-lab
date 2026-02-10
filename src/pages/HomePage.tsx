@@ -17,6 +17,26 @@ export function HomePage() {
   const audioEnabled = useGameStore((s) => s.audioEnabled);
   const toggleAudio = useGameStore((s) => s.toggleAudio);
   const { playSfx, initAudio } = useAudioManager();
+  const handleUtility = React.useCallback((action: () => void) => {
+    initAudio();
+    playSfx('click');
+    action();
+  }, [initAudio, playSfx]);
+  const getColorFact = (lvl: number) => {
+    const facts: Record<number, string> = {
+      1: "Orange is a secondary color made by mixing Red and Yellow!",
+      2: "Green is a secondary color made by mixing Yellow and Blue!",
+      3: "Purple is a secondary color made by mixing Red and Blue!",
+      4: "Vermilion is a tertiary color between Red and Orange!",
+      5: "Lime is a bright tertiary color between Yellow and Green!",
+      6: "Deep Blue is a calm color often found in the deep ocean.",
+      7: "Brick red is a warm earth tone used for buildings.",
+      8: "Amber is a golden-yellow color named after fossilized resin.",
+      9: "Midnight blue represents the color of the night sky.",
+      10: "Slate is a sophisticated grey-blue found in mountain rocks."
+    };
+    return facts[lvl] || "Every color tells a story in the Rainbow Lab!";
+  };
   React.useEffect(() => {
     if (isWon) {
       playSfx('fanfare');
@@ -86,7 +106,7 @@ export function HomePage() {
                 <div className="mt-8 p-6 bg-white/50 backdrop-blur-md rounded-[2.5rem] border-2 border-white border-b-8 border-b-indigo-200">
                   <h4 className="font-black text-indigo-600 uppercase text-sm mb-2">Did you know?</h4>
                   <p className="text-sm font-medium text-zinc-600 leading-relaxed">
-                    Mixing Red and Yellow makes Orange! In our lab, we use Red, Yellow, and Blue to create every color in the rainbow.
+                    {getColorFact(level)}
                   </p>
                 </div>
               </div>
@@ -122,7 +142,7 @@ export function HomePage() {
               </div>
               <h2 className="text-5xl font-black mb-4 text-foreground tracking-tight">SUPER!</h2>
               <p className="text-muted-foreground font-bold text-lg mb-10">
-                You've mastered Level {level}! Your color mixing skills are truly magical.
+                You've mastered Level {level}! {getColorFact(level)}
               </p>
               <Button
                 onClick={() => handleUtility(nextLevel)}
